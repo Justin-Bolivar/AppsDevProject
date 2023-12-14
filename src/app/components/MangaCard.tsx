@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
-import { Button, CardActionArea, CardActions, Link, createTheme } from "@mui/material";
+import { Box, Button, CardActionArea, CardActions, Link, createTheme } from "@mui/material";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -37,18 +37,19 @@ export default async function MangaCard({
   if (showDescription) {
     return (
       <>
-        <Card sx={{ width: width * 3, display: "flex", flexDirection: "row" }}>
+        <Card sx={{ width: width * 3, display: "flex", flexDirection: "row", marginTop: 5, marginLeft: 30}}>
           <CardMedia component="img" height={width * 2} image={picture} />
           <CardContent>
             <Typography gutterBottom variant="h1">
               {manga.data[0].attributes.title.en}
             </Typography>
-            <Typography gutterBottom variant="subtitle1">
+            <Typography gutterBottom variant="subtitle1" sx={{ marginBottom: 5 }}>
               {manga.data[0].attributes.description.en}
             </Typography>
             <div>
               {manga.data[0].attributes.tags.map((tag: any) => (
                 <Chip
+                sx={{ marginRight: 1, marginTop: 1}}
                   key={tag.attributes.name.en}
                   label={tag.attributes.name.en}
                 />
@@ -70,20 +71,21 @@ export default async function MangaCard({
         <Card sx={{ width: width * 2, display: "flex", flexDirection: "row" }}>
           <CardMedia component="img" height={width} image={picture} />
           <CardContent>
-            <Typography gutterBottom variant="h6" >
+            <Typography gutterBottom variant="h6" sx={{ marginBottom: 5 }}>
               {manga.data[0].attributes.title.en}
             </Typography>
 
             <div>
               {manga.data[0].attributes.tags.map((tag: any) => (
                 <Chip
+                  sx={{ marginTop: 1, marginRight: 1}}
                   key={tag.attributes.name.en}
                   label={tag.attributes.name.en}
                 />
               ))}
             </div>
 
-            <CardActions>
+            <CardActions sx={{ display: "flex", justifyContent: "center", marginTop: 5 }}>
               <Link href={`/${title}`}>
               <Button variant="outlined">Read More</Button>
               </Link>
