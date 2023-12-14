@@ -1,8 +1,7 @@
-import Image from 'next/image'
-import SearchBar from './components/SearchBar'
-import LikeButton from './components/LikeButton'
-import Link from 'next/link'
-import { Container } from 'postcss'
+import SearchBar from "./components/SearchBar";
+import LikeButton from "./components/LikeButton";
+import Link from "next/link";
+import MangaCard from "./components/MangaCard";
 
 export default function Home() {
   return (
@@ -10,9 +9,10 @@ export default function Home() {
       <div className="page-container">
       <SearchBar />
       <Link href="/LikedManga">
-      <LikeButton />
+        <LikeButton />
       </Link>
+      <MangaCard title="kagurabachi"/>
       </div>
     </main>
-  )
+  );
 }
