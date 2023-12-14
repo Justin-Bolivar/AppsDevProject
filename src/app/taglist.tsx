@@ -9,7 +9,7 @@ const style = {
     top: '10%',
     left: '10%',
     transform: 'translate(-50%, -50%)',
-    bgcolor: 'background.paper',
+    bgcolor: 'white',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
@@ -22,7 +22,7 @@ export async function TagList() {
   
       const tagList = tagResponse.data.map((tag: { attributes: { name: { en: any; }; }; }) => {
           return(
-            <><Button key={tag.attributes.name.en}> {tag.attributes.name.en} </Button></>
+            <Button variant="outlined" key={tag.attributes.name.en}> {tag.attributes.name.en} </Button>
           );
       })
   

@@ -23,7 +23,6 @@ const style = {
 
 export default function Home() {
 
-    
   return <TagWindow/>
 }
 
