@@ -1,15 +1,16 @@
-import Image from 'next/image'
-import SearchBar from './components/SearchBar'
-import LikeButton from './components/LikeButton'
-import Link from 'next/link'
+import SearchBar from "./components/SearchBar";
+import LikeButton from "./components/LikeButton";
+import Link from "next/link";
+import MangaCard from "./components/MangaCard";
 
 export default function Home() {
   return (
     <main>
       <SearchBar />
       <Link href="/LikedManga">
-      <LikeButton />
+        <LikeButton />
       </Link>
+      <MangaCard title="kagurabachi"/>
     </main>
-  )
+  );
 }
