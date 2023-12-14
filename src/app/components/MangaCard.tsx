@@ -32,7 +32,7 @@ export default async function MangaCard({
   if (showDescription) {
     return (
       <>
-        <Card sx={{ width: width * 3, display: "flex", flexDirection: "row", marginTop: 5, marginLeft: 30, backgroundColor: "#f5f5f5",}}>
+        <Card sx={{ width: width * 3, display: "flex", flexDirection: "row", marginTop: 5, marginLeft: 30, backgroundColor: "#f5f5f5", boxShadow: "5px 4px 4px rgba(0, 0, 0, 0.15)"}}>
           <CardMedia component="img" height={width * 2} image={picture} />
           <CardContent>
             <Typography sx={{ marginBottom: 5, marginLeft: 5 }} variant="h1" fontWeight="bold">
@@ -66,7 +66,7 @@ export default async function MangaCard({
         <Card sx={{ width: width * 2, display: "flex", flexDirection: "row", backgroundColor: "#f5f5f5", marginTop: 5, boxShadow: "5px 4px 4px rgba(0, 0, 0, 0.15)" }}>
           <CardMedia component="img" height={width} image={picture} />
           <CardContent>
-            <Typography gutterBottom variant="h5" sx={{ marginBottom: 5 }}>
+            <Typography fontWeight="bold" variant="h5" sx={{ marginBottom: 5 }}>
               {manga.data[0].attributes.title.en}
             </Typography>
 
