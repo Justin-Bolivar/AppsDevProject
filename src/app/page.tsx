@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import getAllTags from '../../lib/getAllTags';
 import { Tag } from '../../types';
-import { TagList } from './taglist';
 
 
 const style = {
