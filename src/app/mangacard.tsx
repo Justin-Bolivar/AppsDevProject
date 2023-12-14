@@ -1,37 +1,63 @@
-import React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Chip from '@mui/material/Chip';
+import React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import Chip from "@mui/material/Chip";
+import { useState, useEffect } from "react";
 
+interface Props {
+title: string;
+}
 
+interface Manga {
+    tags: {
+    attributes: {
+        name: {
+        en: string;
+        };
+    };
+    }[];
 
-const MangaCard = () => {
-    const mangaID = 1;
-    const mangaTitle = 'Kagura Bachi'
-    const picture = 'https://mangadex.org/covers/d65c0332-3764-4c89-84bd-b1a4e7278ad7/3fa0e8cc-0e39-4cb8-8f25-d70fb86cf110.jpg';
-    const synopsis = 'This is a placeholder synopsis.';
-    const tags = ['tag1', 'tag2', 'tag3'];
+}
 
-    return (
-    <Card sx={{ maxWidth: 345 }}>
-        <CardMedia component="img" height="140" image={picture} alt={synopsis} />
-        <CardContent>
+interface Tag {
+    attributes: {
+        name: {
+        en: string;
+        };
+    };
+}
+
+async function MangaCard({ title }: Props) {
+const url = "https://api.mangadex.org";
+const response = await fetch(`${url}/manga/?title=${title}`);
+if (!response.ok) throw new Error("Failed to find manga info");
+const manga = await response.json();
+
+const response2 = await fetch(`${url}/cover/${manga.data[0].relationships[2].id}`);
+if (!response2.ok) throw new Error("Failed to find manga cover");
+const filename = await response2.json();
+const picture = `https://uploads.mangadex.org/covers/${manga.data[0].id}/${filename.data.attributes.fileName}`
+
+return (
+    <Card sx={{ maxWidth: 345 }}> {/*345*/}
+    <CardMedia component="img" height="140" image={picture} />
+    <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-            {mangaTitle}
+        {manga.data[0].attributes.title.en}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-            {synopsis}
+        {manga.data[0].attributes.description.en}
         </Typography>
         <div>
-            {tags.map((tag) => (
-            <Chip key={tag} label={tag} />
-            ))}
+        {manga.data[0].attributes.tags.map((tag : any) => (
+            <Chip key={tag.attributes.name.en} label={tag.attributes.name.en} /> 
+        ))}
         </div>
-        </CardContent>
+    </CardContent>
     </Card>
-    );
-};
+);
+}
 
 export default MangaCard;
