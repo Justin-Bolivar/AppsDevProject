@@ -41,7 +41,7 @@ async function MangaCard({ title }: Props) {
   const picture = `https://uploads.mangadex.org/covers/${manga.data[0].id}/${filename.data.attributes.fileName}`
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }}> {/*345*/}
       <CardMedia component="img" height="140" image={picture} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
