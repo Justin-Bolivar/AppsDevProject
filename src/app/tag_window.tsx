@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -10,7 +11,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: 'background.paper',
+  bgcolor: 'black',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
@@ -33,18 +34,18 @@ export default function TagWindow() {
       >
         <Box sx={style}>
           <h4 className="">Format</h4>
-          <div className=" flex-wrap gap-2 mb-4"><a href="" className="tag">
-            <Button>4-Koma</Button></a><a href="" className="tag">
-            <Button>Adaptation</Button></a><a href="" className="tag">
-            <Button>Anthology</Button></a><a href="" className="tag">
-            <Button>Award Winning</Button></a><a href="" className="tag">
-            <Button>Doujinshi</Button></a><a href="" className="tag">
-            <Button>Fan Colored</Button></a><a href="" className="tag">
-            <Button>Full Color</Button></a><a href="" className="tag">
-            <Button>Long Strip</Button></a><a href="" className="tag">
-            <Button>Official Colored</Button></a><a href="" className="tag">
-            <Button>Oneshot</Button></a><a href="" className="tag">
-            <Button>Self-Published</Button></a><a href="" className="tag">
+          <div className=" flex-wrap gap-2 mb-4"><a href="" className="">
+            <Button>4-Koma</Button></a><a href="" className="">
+            <Button>Adaptation</Button></a><a href="" className="">
+            <Button>Anthology</Button></a><a href="" className="">
+            <Button>Award Winning</Button></a><a href="" className="">
+            <Button>Doujinshi</Button></a><a href="" className="">
+            <Button>Fan Colored</Button></a><a href="" className="">
+            <Button>Full Color</Button></a><a href="" className="">
+            <Button>Long Strip</Button></a><a href="" className="">
+            <Button>Official Colored</Button></a><a href="" className="">
+            <Button>Oneshot</Button></a><a href="" className="">
+            <Button>Self-Published</Button></a><a href="" className="">
             <Button>Web Comic</Button></a></div>
           <h4 className="">Genre</h4>
           <div className="">
