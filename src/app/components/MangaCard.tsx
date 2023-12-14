@@ -5,11 +5,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import { Box, Button, CardActionArea, CardActions, Link, createTheme } from "@mui/material";
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-
 
 interface Props {
   title: string;
@@ -37,16 +32,16 @@ export default async function MangaCard({
   if (showDescription) {
     return (
       <>
-        <Card sx={{ width: width * 3, display: "flex", flexDirection: "row", marginTop: 5, marginLeft: 30}}>
+        <Card sx={{ width: width * 3, display: "flex", flexDirection: "row", marginTop: 5, marginLeft: 30, backgroundColor: "#f5f5f5",}}>
           <CardMedia component="img" height={width * 2} image={picture} />
           <CardContent>
-            <Typography gutterBottom variant="h1">
+            <Typography sx={{ marginBottom: 5, marginLeft: 5 }} variant="h1" fontWeight="bold">
               {manga.data[0].attributes.title.en}
             </Typography>
-            <Typography gutterBottom variant="subtitle1" sx={{ marginBottom: 5 }}>
+            <Typography sx={{ marginBottom: 5, marginLeft: 5, marginRight: 5 }}  variant="subtitle1">
               {manga.data[0].attributes.description.en}
             </Typography>
-            <div>
+            <Box sx={{ marginBottom: 5, marginLeft: 5, marginRight: 5, marginTop:5 }} >
               {manga.data[0].attributes.tags.map((tag: any) => (
                 <Chip
                 sx={{ marginRight: 1, marginTop: 1}}
@@ -54,7 +49,7 @@ export default async function MangaCard({
                   label={tag.attributes.name.en}
                 />
               ))}
-            </div>
+            </Box>
           </CardContent>
         </Card>
         <br></br>
@@ -68,10 +63,10 @@ export default async function MangaCard({
   } else {
     return (
       <>
-        <Card sx={{ width: width * 2, display: "flex", flexDirection: "row" }}>
+        <Card sx={{ width: width * 2, display: "flex", flexDirection: "row", backgroundColor: "#f5f5f5", marginTop: 5, boxShadow: "5px 4px 4px rgba(0, 0, 0, 0.15)" }}>
           <CardMedia component="img" height={width} image={picture} />
           <CardContent>
-            <Typography gutterBottom variant="h6" sx={{ marginBottom: 5 }}>
+            <Typography gutterBottom variant="h5" sx={{ marginBottom: 5 }}>
               {manga.data[0].attributes.title.en}
             </Typography>
 
