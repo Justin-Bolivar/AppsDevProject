@@ -1,10 +1,15 @@
-import React from "react";
+import * as React from 'react';
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Button, CardActionArea, CardActions, Link, createTheme } from "@mui/material";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 
 interface Props {
   title: string;
@@ -32,32 +37,31 @@ export default async function MangaCard({
   if (showDescription) {
     return (
       <>
-        <Card sx={{ width: width * 2, display: "flex", flexDirection: "row" }}>
-          <CardMedia
-            component="img"
-            height={width * 2}
-            image={picture}
-          />
+        <Card sx={{ width: width * 3, display: "flex", flexDirection: "row" }}>
+          <CardMedia component="img" height={width * 2} image={picture} />
           <CardContent>
-            <Typography gutterBottom variant="h2" component="div">
+            <Typography gutterBottom variant="h1">
               {manga.data[0].attributes.title.en}
-
             </Typography>
-            <Typography variant="h4" color="text.primary">{/*variant="body2" color="text.secondary"*/}
+            <Typography gutterBottom variant="subtitle1">
               {manga.data[0].attributes.description.en}
-
             </Typography>
             <div>
               {manga.data[0].attributes.tags.map((tag: any) => (
-              <Chip
-                key={tag.attributes.name.en}
-                label={tag.attributes.name.en}
-              />
-            ))}
+                <Chip
+                  key={tag.attributes.name.en}
+                  label={tag.attributes.name.en}
+                />
+              ))}
             </div>
           </CardContent>
         </Card>
         <br></br>
+        <Link href={`/`}>
+        <center>
+        <Button size="large" variant="outlined">Home</Button>
+        </center>
+        </Link>
       </>
     );
   } else {
@@ -66,23 +70,23 @@ export default async function MangaCard({
         <Card sx={{ width: width * 2, display: "flex", flexDirection: "row" }}>
           <CardMedia component="img" height={width} image={picture} />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h6" >
               {manga.data[0].attributes.title.en}
-              
             </Typography>
+
             <div>
               {manga.data[0].attributes.tags.map((tag: any) => (
-              <Chip
-                key={tag.attributes.name.en}
-                label={tag.attributes.name.en}
-              />
-            ))}
-              
+                <Chip
+                  key={tag.attributes.name.en}
+                  label={tag.attributes.name.en}
+                />
+              ))}
             </div>
+
             <CardActions>
-              <Button size="large" color="primary">
-                <b>Read More</b>
-              </Button>
+              <Link href={`/${title}`}>
+              <Button variant="outlined">Read More</Button>
+              </Link>
             </CardActions>
           </CardContent>
         </Card>
