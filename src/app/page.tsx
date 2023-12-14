@@ -10,7 +10,7 @@ export default function Home() {
       <Link href="/LikedManga">
         <LikeButton />
       </Link>
-      <MangaCard title="Chainsaw Man"/>
+      <MangaCard title="chainsaw man"/>
     </main>
   );
 }
