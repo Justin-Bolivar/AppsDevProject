@@ -30,19 +30,19 @@ interface Tag {
 }
 
 async function MangaCard({ title }: Props) {
-  const url = "https://api.mangadex.org/manga/";
-  const response = await fetch(`${url}?title=${title}`);
-  if (!response.ok) throw new Error("Failed to fetch user");
+  const url = "https://api.mangadex.org";
+  const response = await fetch(`${url}/manga/?title=${title}`);
+  if (!response.ok) throw new Error("Failed to find manga info");
   const manga = await response.json();
-  console.log(manga);
 
-  const picture =
-    "https://mangadex.org/covers/d65c0332-3764-4c89-84bd-b1a4e7278ad7/3fa0e8cc-0e39-4cb8-8f25-d70fb86cf110.jpg";
-  const synopsis = "This is a placeholder synopsis.";
+  const response2 = await fetch(`${url}/cover/${manga.data[0].relationships[2].id}`);
+  if (!response2.ok) throw new Error("Failed to find manga cover");
+  const filename = await response2.json();
+  const picture = `https://uploads.mangadex.org/covers/${manga.data[0].id}/${filename.data.attributes.fileName}`
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia component="img" height="140" image={picture} alt={synopsis} />
+      <CardMedia component="img" height="140" image={picture} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {manga.data[0].attributes.title.en}
