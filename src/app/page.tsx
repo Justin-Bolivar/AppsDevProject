@@ -6,11 +6,13 @@ import MangaCard from "./components/MangaCard";
 export default function Home() {
   return (
     <main>
-      <div className = "page-container">
+      <center>
       <SearchBar />
       <Link href="/LikedManga">
         <LikeButton />
       </Link>
+      </center>
+      <div className ='page-container'>
       <MangaCard width= {256} title="Chainsaw Man" />
       </div>
     </main>
