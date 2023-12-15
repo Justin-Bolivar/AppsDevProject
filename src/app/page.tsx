@@ -28,8 +28,7 @@ const style = {
 export default function Home() {
   return (
     <main>
-      <center>
-        <SearchBar />
+        <center>
             <MangaCard width={256} title="Kagurabachi" showDescription={false}  />  
           
             <MangaCard width={256} title="Spy Family" showDescription={false} />
@@ -50,7 +49,7 @@ export default function Home() {
           
             <MangaCard width={256} title="One Piece" showDescription={false} />
           
-      </center>
+        </center>
     </main>
   );
 }

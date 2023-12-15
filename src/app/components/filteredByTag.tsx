@@ -31,8 +31,8 @@ export default async function FilterTag({tagName}:Props){
   const mangaList = resp.data.data.map((manga: { id: any; }) => {
       return(
         <><p key={manga.id}> {manga.id} </p><br></br></>
-       );
-   })
+      );
+  })
 
   return mangaList
   

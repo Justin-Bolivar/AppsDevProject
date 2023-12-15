@@ -40,6 +40,7 @@ export default function SearchBar() {
       <Paper
         component="form"
         sx={{
+          boxShadow: "5px 4px 10px rgba(85, 39, 127, 0.25)", 
           p: "2px 4px",
           display: "flex",
           alignItems: "center",
@@ -62,7 +63,7 @@ export default function SearchBar() {
         >
           <TagWindow />
         </Modal>
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        <Divider sx={{ height: 28, m: 0. }} orientation="vertical" />
         <InputBase
           sx={{ ml: 1, flex: 1, color: "black", fontWeight: 800 }}
           placeholder="Search Manga"
