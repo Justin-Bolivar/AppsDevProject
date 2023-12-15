@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
+import { Link } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -21,12 +23,27 @@ const style = {
   '& button': { m: .5 }
 };
 
+type Params = {
+  params: {
+    tagName: string;
+  };
+};
 
 
 export default function TagWindow() {
   // const [open, setOpen] = React.useState(false);
   // const handleOpen = () => setOpen(true);
   // const handleClose = () => setOpen(false);
+
+  // const handleClick = (tagName: any) => (event: any) =>{
+  //   <FilterTag tagName={tagName}></FilterTag>
+  // }
+
+  const router = useRouter(); 
+
+  const filter = async (e: { currentTarget: { value: any; }; }) => {
+    router.push(`/filter/${e.currentTarget.value}`)
+  }
 
   return (
     <div>
@@ -39,7 +56,7 @@ export default function TagWindow() {
       > */}
         <Box sx={style}>
           {/* tags */}
-          <Typography color={'black'} id="modal-modal-title" variant="h4" sx={{mt:3}}>
+          <Typography color={'black'} id="modal-modal-title" variant="h4" sx={{mt:1, mb:3}}>
             TAGS
           </Typography>
           
@@ -64,7 +81,7 @@ export default function TagWindow() {
            <Divider textAlign='left'sx={{fontWeight: "bold"}}>Genre</Divider>
           </Typography>
           
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Action</Button>
+              <Button value="Action" variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}} onClick={filter}>Action</Button>
               <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Adventure</Button>
               <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Boys Love</Button>
               <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Comedy</Button>
