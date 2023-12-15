@@ -10,6 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import TagWindow from "./tag_window";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -24,7 +25,8 @@ export default function SearchBar() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [inputFieldValue, setInputFieldValue] = React.useState("");
-
+  const router = useRouter();
+  
   return (
     <Box
       sx={{
@@ -68,6 +70,12 @@ export default function SearchBar() {
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             setInputFieldValue(event.target.value);
             console.log(inputFieldValue);
+          }}
+          onKeyDown={(ev) => {
+            if (ev.key === "Enter") {
+              ev.preventDefault();
+              router.push(`/${inputFieldValue}`);
+            }
           }}
         />
         <Link href={`/${inputFieldValue}`}>
