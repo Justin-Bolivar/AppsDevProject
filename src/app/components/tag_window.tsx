@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
+import { useRouter } from 'next/navigation';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -21,12 +22,63 @@ const style = {
   '& button': { m: .5 }
 };
 
+const format = [
+  '4-Koma', 'Adaptation', 'Anthology',
+  'Award Winning', 'Doujinshi', 'Fan Colored',
+  'Full Color', 'Long Strip', 'Official Colored',
+  'Oneshot', 'Self-Published', 'Web Comic'
+];
+
+const genre = [
+  "Action", "Adventure", "Boys' Love",
+  "Comedy", "Crime", "Drama",
+  "Fantasy", "Girls Love", "Historical",
+  "Horror", "Isekai", "Magical Girls",
+  "Mecha", "Medical", "Mystery",
+  "Philosophical", "Psychological", "Romance",
+  "Sci-Fi", "Slice of Life",
+  "Sports", "Superhero", "Thriller",
+  "Tragedy", "Wuxia"
+];
+
+const theme = [
+  "Aliens", "Animals", "Cooking",
+  "Crossdressing", "Delinquents", "Demons",
+  "Genderswap", "Ghosts", "Gyaru",
+  "Harem", "Incest", "Loli",
+  "Mafia", "Magic", "Martial Arts",
+  "Military", "Monster Girls", "Monsters",
+  "Music", "Ninja", "Office Workers", "Police",
+  "Post-Apocalyptic", "Reincarnation",
+  "Reverse Harem", "Samurai", "School Life",
+  "Shota", "Supernatural", "Survival",
+  "Time Travel", "Traditional Games",
+  "Vampires", "Video Games", "Villainess",
+  "Virtual Reality", "Zombies"
+];
+
+
+type Params = {
+  params: {
+    tagName: string;
+  };
+};
 
 
 export default function TagWindow() {
   // const [open, setOpen] = React.useState(false);
   // const handleOpen = () => setOpen(true);
   // const handleClose = () => setOpen(false);
+
+  // const handleClick = (tagName: any) => (event: any) =>{
+  //   <FilterTag tagName={tagName}></FilterTag>
+  // }
+
+  const router = useRouter();
+
+  const filter = async (e: { currentTarget: { value: any; }; }) => {
+    router.push(`/filter/${e.currentTarget.value}`)
+  }
 
   return (
     <div>
@@ -37,104 +89,51 @@ export default function TagWindow() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       > */}
-        <Box sx={style}>
-          {/* tags */}
-          <Typography color={'black'} id="modal-modal-title" variant="h4" sx={{mt:3}}>
-            TAGS
-          </Typography>
-          
-          <Typography color={'black'} id="modal-modal-title" variant="button">
-            <Divider textAlign='left'sx={{fontWeight: "bold"}}>Format</Divider>
-          </Typography>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>4-Koma</Button>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Adaptation</Button>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Anthology</Button>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Award Winning</Button>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Doujinshi</Button>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Fan Colored</Button>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Full Color</Button>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Long Strip</Button>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Official Colored</Button>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Oneshot</Button>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Self-Published</Button>
-            <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Web Comic</Button>
-          
-            
-          <Typography color={'black'} id="modal-modal-title" variant="button">
-          <Divider textAlign='left'sx={{fontWeight: "bold"}}>Genre</Divider>
-          </Typography>
-          
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Action</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Adventure</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Boys Love</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Comedy</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Crime</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Drama</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Fantasy</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Girls Love</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Historical</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Horror</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Isekai</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Magical Girls</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Mecha</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Medical</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Mystery</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Philosophical</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Psychological</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Romance</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Sci-Fi</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Slice of Life</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Sports</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Superhero</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Thriller</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Tragedy</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Wuxia</Button>
-              
-          <Typography color={'black'} id="modal-modal-title" variant="button">
-          <Divider textAlign='left'sx={{fontWeight: "bold"}}>Theme</Divider>
-          </Typography>
-          
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Aliens</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Animals</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Cooking</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Crossdressing</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Delinquents</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Demons</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Genderswap</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Ghosts</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Gyaru</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Harem</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Incest</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Loli</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Mafia</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Magic</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Martial Arts</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Military</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Monster Girls</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Monsters</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Music</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Ninja</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Office Workers</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Police</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Post-Apocalyptic</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Reincarnation</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Reverse Harem</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Samurai</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>School Life</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Shota</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Supernatural</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Survival</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Time Travel</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Traditional Games</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Vampires</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Video Games</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Villainess</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Virtual Reality</Button>
-              <Button variant="outlined" size="small" sx={{fontWeight: "bold", color:"#a084ff", borderBlockColor: "#a084ff"}}>Zombies</Button>
-              
+      <Box sx={style}>
+        {/* tags */}
+        <Typography color={'black'} id="modal-modal-title" variant="h4" sx={{ mt: 1, mb: 3 }}>
+          TAGS
+        </Typography>
 
-        </Box>
+        <Typography color={'black'} id="modal-modal-title" variant="button">
+          <Divider textAlign='left' sx={{ fontWeight: "bold" }}>Format</Divider>
+        </Typography>
+
+        <>
+          {
+            format.map((element) => {
+              return <Button key={element} value={element} variant="outlined" size="small" sx={{ fontWeight: "bold", color: "#a084ff", borderBlockColor: "#a084ff" }} onClick={filter}>{element}</Button>
+            })
+          }
+        </>
+
+        <Typography color={'black'} id="modal-modal-title" variant="button">
+          <Divider textAlign='left' sx={{ fontWeight: "bold" }}>Genre</Divider>
+        </Typography>
+
+        <>
+          {
+            genre.map((element) => {
+              return <Button key={element} value={element} variant="outlined" size="small" sx={{ fontWeight: "bold", color: "#a084ff", borderBlockColor: "#a084ff" }} onClick={filter}>{element}</Button>
+            })
+          }
+        </>
+
+        <Typography color={'black'} id="modal-modal-title" variant="button">
+          <Divider textAlign='left' sx={{ fontWeight: "bold" }}>Theme</Divider>
+        </Typography>
+
+        <>
+          {
+            theme.map((element) => {
+              return <Button key={element} value={element} variant="outlined" size="small" sx={{ fontWeight: "bold", color: "#a084ff", borderBlockColor: "#a084ff" }} onClick={filter}>{element}</Button>
+            })
+          }
+        </>
+
+
+      </Box >
       {/* </Modal> */}
-    </div>
+    </div >
   );
 }
