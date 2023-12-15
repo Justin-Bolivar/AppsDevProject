@@ -5,6 +5,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import { Box, Button, CardActionArea, CardActions, Link, createTheme } from "@mui/material";
+import LikeButton from './likeButton';
+import Badge, { BadgeProps } from '@mui/material/Badge';
+
+
+
 
 interface Props {
   title: string;
@@ -12,6 +17,7 @@ interface Props {
   showDescription: boolean;
   mangaID?: string;
 }
+
 
 export default async function MangaCard({
   width,
@@ -39,10 +45,24 @@ export default async function MangaCard({
 
     return (
       <>
+      <Badge
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left',
+      }}  
+      sx={{
+        '& .MuiBadge-badge': {
+          left: 480,
+          top: 55,
+          padding: '0 -5px'
+        },
+      }}
+      badgeContent={<LikeButton isLiked={true}/>}
+      >
         <Card sx={{ maxHeight: width * 2.5, width: width * 2, display: "flex", flexDirection: "row", backgroundColor: "#f5f5f5", marginTop: 5, boxShadow: "5px 4px 10px rgba(85, 39, 127, 0.25)" }}>
           <CardMedia component="img" height={width} image={picture} />
           <CardContent>
-            <Typography fontWeight="bold" variant="h5" sx={{ marginBottom: 5 }}>
+            <Typography fontWeight="bold" variant="h5" sx={{ marginBottom: 5, marginRight: 5, mt:0.5, ml:.8}} textAlign={'left'}>
               {manga.data.attributes.title.en}
             </Typography>
 
@@ -63,6 +83,7 @@ export default async function MangaCard({
             </CardActions>
           </CardContent>
         </Card>
+      </Badge>
         <br></br>
       </>
     );
@@ -117,13 +138,26 @@ export default async function MangaCard({
   } else {
     return (
       <>
+      <Badge
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}  
+        sx={{
+          '& .MuiBadge-badge': {
+            left: 480,
+            top: 55,
+            padding: '0 -5px'
+          },
+        }}
+        badgeContent={<LikeButton isLiked={false}/>}
+      >
         <Card sx={{ width: width * 2, display: "flex", flexDirection: "row", backgroundColor: "#f5f5f5", marginTop: 5, boxShadow: "5px 4px 10px rgba(85, 39, 127, 0.25)" }}>
           <CardMedia component="img" height={width} image={picture} />
           <CardContent>
-            <Typography fontWeight="bold" variant="h5" sx={{ marginBottom: 5 }}>
+            <Typography fontWeight="bold" variant="h5" sx={{ marginBottom: 5, marginRight: 5, mt:0.5, ml:.8}} textAlign={'left'}>
               {manga.data[0].attributes.title.en}
             </Typography>
-
             <div>
               {manga.data[0].attributes.tags.map((tag: any) => (
                 <Chip
@@ -141,6 +175,7 @@ export default async function MangaCard({
             </CardActions>
           </CardContent>
         </Card>
+      </Badge>
         <br></br>
       </>
     );
