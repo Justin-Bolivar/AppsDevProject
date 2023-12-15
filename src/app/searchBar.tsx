@@ -22,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-export default function NavBar() {
+export default function SearchBar() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
