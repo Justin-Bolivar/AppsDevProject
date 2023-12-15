@@ -1,38 +1,53 @@
 import React from 'react'
 import MangaCard from '@/app/components/MangaCard';
 
-interface Props {
-  tagName: string;
-}
-
-export default async function FilterTag({tagName}:Props){
-
-  const selectedTagName = [tagName];
-  const baseUrl = 'https://api.mangadex.org';
-  const response = await fetch('https://api.mangadex.org/manga/tag');
-  if (!response.ok) throw new Error("Failed to find manga tag list");
-  const tagResponse = await response.json();
-
-  console.log(tagResponse)
-  const selectedTagID = tagResponse.data.data
-    .filter((tag: { attributes: { name: { en: string; }; }; }) => selectedTagName.includes(tag.attributes.name.en))
-    .map((tag: { id: any; }) => tag.id);
-
-  
-  const resp = tagResponse({
-    method: 'GET',
-    url: `${baseUrl}/manga`,
+type Params = {
     params: {
-        'selectedTags': selectedTagID
-    }
-  });
+        tagName: string;
+    };
+};
 
-   const filteredManga = resp.data.data.map((manga: { title: any; }) => {
-    return(
-      <MangaCard key={manga.title} width={512} title={manga.title} showDescription={true} />
-     );
- })
+export default async function FilterTag({ params: { tagName } }: Params) {
 
-  return filteredManga
-  
+    
+    const replacedTagName = tagName.replace(/%20/g, " ");
+
+    console.log(replacedTagName)
+
+    const selectedTagName = [replacedTagName];
+
+    const baseUrl = 'https://api.mangadex.org';
+    const response = await fetch(`${baseUrl}/manga/tag`);
+
+    if (!response.ok) throw new Error("Failed to find manga tag list");
+    const tagResponse = await response.json();
+
+    const selectedTagID = tagResponse.data
+        .filter((tag) => selectedTagName.includes(tag.attributes.name.en))
+        .map((tag) => tag.id);
+
+    const resp = await fetch(`${baseUrl}/manga/?includedTags[]=${selectedTagID[0]}`)
+    const respJson = await resp.json();
+
+    /*const resp = await axios({
+            method: 'GET',
+            url: `${baseUrl}/manga`,
+            params: {
+                'selectedTags': selectedTagID
+            }
+        });*/
+
+    const filteredManga = respJson.data.map((manga) => {
+        return (
+            <>
+                <center>
+                    <MangaCard key={manga.attributes.title} width={256} title={manga.attributes.title} showDescription={false} mangaID={manga.id} />
+                    <br></br>
+                </center>
+            </>
+        );
+    })
+
+    return filteredManga
+
 }
