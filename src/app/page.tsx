@@ -1,5 +1,5 @@
 import React from 'react'
-import TagWindow from './tag_window'
+import TagWindow from './components/tag_window'
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -8,6 +8,7 @@ import { Tag } from '../../types';
 import Link from "next/link";
 import MangaCard from "./components/MangaCard";
 import { Box, Grid } from "@mui/material";
+import NavBar from './components/searchBar';
 
 
 const style = {
@@ -27,6 +28,7 @@ export default function Home() {
   return (
     <main>
       <center>
+        <NavBar />
             <MangaCard width={256} title="Kagurabachi" showDescription={false}  />  
           
             <MangaCard width={256} title="Spy Family" showDescription={false} />
