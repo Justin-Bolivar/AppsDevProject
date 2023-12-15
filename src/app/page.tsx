@@ -1,14 +1,12 @@
 import React from 'react'
 import TagWindow from './tag_window'
 import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import getAllTags from '../../lib/getAllTags';
 import { Tag } from '../../types';
 import Link from "next/link";
 import MangaCard from "./components/MangaCard";
-import React from "react";
 import { Box, Grid } from "@mui/material";
 
 
@@ -23,13 +21,6 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
-export default function Home() {
-
-  return <TagWindow/>
-}
-
-
 
 
 export default function Home() {
