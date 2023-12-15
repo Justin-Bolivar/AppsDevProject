@@ -23,8 +23,8 @@ export default async function FilterTag({ params: { tagName } }: Params) {
     const tagResponse = await response.json();
 
     const selectedTagID = tagResponse.data
-        .filter((tag) => selectedTagName.includes(tag.attributes.name.en))
-        .map((tag) => tag.id);
+        .filter((tag: { attributes: { name: { en: string; }; }; }) => selectedTagName.includes(tag.attributes.name.en))
+        .map((tag: { id: any; }) => tag.id);
 
     const resp = await fetch(`${baseUrl}/manga/?includedTags[]=${selectedTagID[0]}`)
     const respJson = await resp.json();
@@ -37,7 +37,7 @@ export default async function FilterTag({ params: { tagName } }: Params) {
             }
         });*/
 
-    const filteredManga = respJson.data.map((manga) => {
+    const filteredManga = respJson.data.map((manga: { attributes: { title: React.Key | null | undefined; }; id: string | undefined; }) => {
         return (
             <>
                 <center>

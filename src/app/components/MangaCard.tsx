@@ -26,7 +26,7 @@ export default async function MangaCard({
     if (!response.ok) throw new Error("Failed to find manga info");
     const manga = await response.json();
 
-    let coverArtID = manga.data.relationships.find((relationship) =>{
+    let coverArtID = manga.data.relationships.find((relationship: { type: string; }) =>{
       return (relationship.type==='cover_art');
     })
     
@@ -72,7 +72,7 @@ export default async function MangaCard({
   if (!response.ok) throw new Error("Failed to find manga info");
   const manga = await response.json();
 
-  let coverArtID = manga.data[0].relationships.find((relationship) =>{
+  let coverArtID = manga.data[0].relationships.find((relationship: { type: string; }) =>{
     return (relationship.type==='cover_art');
   })
   
@@ -117,7 +117,7 @@ export default async function MangaCard({
   } else {
     return (
       <>
-        <Card sx={{ maxHeight: width * 2.5, width: width * 2, display: "flex", flexDirection: "row", backgroundColor: "#f5f5f5", marginTop: 5, boxShadow: "5px 4px 10px rgba(85, 39, 127, 0.25)" }}>
+        <Card sx={{ width: width * 2, display: "flex", flexDirection: "row", backgroundColor: "#f5f5f5", marginTop: 5, boxShadow: "5px 4px 10px rgba(85, 39, 127, 0.25)" }}>
           <CardMedia component="img" height={width} image={picture} />
           <CardContent>
             <Typography fontWeight="bold" variant="h5" sx={{ marginBottom: 5 }}>
