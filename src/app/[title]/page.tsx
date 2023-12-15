@@ -1,5 +1,7 @@
 import MangaCard from "../components/MangaCard";
 
+
+
 type Params = {
   params: {
     title: string;
