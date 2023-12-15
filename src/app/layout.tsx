@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import SearchBar from './components/searchBar'
-import { AppBar, Box, Stack } from '@mui/material'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className='bg-gradient-to-r from-fuchsia-950 via-violet-300 to-fuchsia-950'>
         <div style={{ position: 'fixed', top: 0, width: '100%', zIndex: 1000 }}>
           <SearchBar/>
         </div>

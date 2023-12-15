@@ -1,11 +1,7 @@
-// "use client"
 import * as React from 'react';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 import { useRouter } from 'next/navigation';
 
@@ -66,13 +62,6 @@ type Params = {
 
 
 export default function TagWindow() {
-  // const [open, setOpen] = React.useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
-
-  // const handleClick = (tagName: any) => (event: any) =>{
-  //   <FilterTag tagName={tagName}></FilterTag>
-  // }
 
   const router = useRouter();
 
@@ -82,13 +71,6 @@ export default function TagWindow() {
 
   return (
     <div>
-      {/* <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      > */}
       <Box sx={style}>
         {/* tags */}
         <Typography color={'black'} id="modal-modal-title" variant="h4" sx={{ mt: 1, mb: 3 }}>
@@ -130,8 +112,6 @@ export default function TagWindow() {
             })
           }
         </>
-
-
       </Box >
       {/* </Modal> */}
     </div >

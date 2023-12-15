@@ -29,15 +29,9 @@ export default async function FilterTag({ params: { tagName } }: Params) {
     const resp = await fetch(`${baseUrl}/manga/?includedTags[]=${selectedTagID[0]}`)
     const respJson = await resp.json();
 
-    /*const resp = await axios({
-            method: 'GET',
-            url: `${baseUrl}/manga`,
-            params: {
-                'selectedTags': selectedTagID
-            }
-        });*/
 
-    const filteredManga = respJson.data.map((manga: { attributes: { title: React.Key | null | undefined; }; id: string | undefined; }) => {
+
+    const filteredManga = respJson.data.map((manga: { attributes: { title: string; }; id: string | undefined; }) => {
         return (
             <>
                 <center>
