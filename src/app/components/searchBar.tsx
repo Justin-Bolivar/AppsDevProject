@@ -22,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-export default function NavBar() {
+export default function SearchBar() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -33,7 +33,7 @@ export default function NavBar() {
       component="form"
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 700, justifyContent:"center" }}
     >
-      <IconButton sx={{ p: '5px' }} aria-label="menu" onClick={handleOpen}>
+      <IconButton sx={{ p: '10px', color:"#a084ff" }} aria-label="menu" onClick={handleOpen}>
         #
       </IconButton>
         <Modal
@@ -50,7 +50,7 @@ export default function NavBar() {
         placeholder="Search Manga"
         inputProps={{ 'aria-label': 'search google maps' }}
       />
-      <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+      <IconButton type="button" sx={{ p: '10px', color:"#a084ff" }} aria-label="search">
         <SearchIcon />
       </IconButton>
     </Paper>

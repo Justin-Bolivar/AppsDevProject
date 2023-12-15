@@ -9,6 +9,7 @@ import Link from "next/link";
 import MangaCard from "./components/MangaCard";
 import { Box, Grid } from "@mui/material";
 import NavBar from './components/searchBar';
+import SearchBar from './components/searchBar';
 
 
 const style = {
@@ -28,7 +29,7 @@ export default function Home() {
   return (
     <main>
       <center>
-        <NavBar />
+        <SearchBar />
             <MangaCard width={256} title="Kagurabachi" showDescription={false}  />  
           
             <MangaCard width={256} title="Spy Family" showDescription={false} />
