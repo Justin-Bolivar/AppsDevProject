@@ -72,9 +72,11 @@ export default async function MangaCard({
   if (!response.ok) throw new Error("Failed to find manga info");
   const manga = await response.json();
 
-  const response2 = await fetch(
-    `${url}/cover/${manga.data[0].relationships[2].id}`
-  );
+  let coverArtID = manga.data[0].relationships.find((relationship) =>{
+    return (relationship.type==='cover_art');
+  })
+  
+  const response2 = await fetch(`${url}/cover/${coverArtID.id}`);
   if (!response2.ok) throw new Error("Failed to find manga cover");
   const filename = await response2.json();
   const picture = `https://uploads.mangadex.org/covers/${manga.data[0].id}/${filename.data.attributes.fileName}.${width}.jpg`;
