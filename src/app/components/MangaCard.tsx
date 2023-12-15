@@ -44,7 +44,7 @@ export default async function MangaCard({
             <Box sx={{ marginBottom: 5, marginLeft: 5, marginRight: 5, marginTop:5 }} >
               {manga.data[0].attributes.tags.map((tag: any) => (
                 <Chip
-                sx={{ marginRight: 1, marginTop: 1}}
+                  sx={{ marginTop: 1, marginRight: 1,backgroundColor: "transparent",border: "2px solid #a084ff", borderRadius: 5, color:"#a084ff" }}
                   key={tag.attributes.name.en}
                   label={tag.attributes.name.en}
                 />
@@ -73,7 +73,7 @@ export default async function MangaCard({
             <div>
               {manga.data[0].attributes.tags.map((tag: any) => (
                 <Chip
-                  sx={{ marginTop: 1, marginRight: 1}}
+                  sx={{ marginTop: 1, marginRight: 1,backgroundColor: "transparent",border: "2px solid #a084ff", borderRadius: 5, color:"#a084ff" }}
                   key={tag.attributes.name.en}
                   label={tag.attributes.name.en}
                 />
