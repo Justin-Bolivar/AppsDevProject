@@ -29,6 +29,9 @@ export default function Home() {
   return (
     <main>
         <center>
+          <br></br>
+          <br></br>
+          <br></br>
             <MangaCard width={256} title="Kagurabachi" showDescription={false}  />  
           
             <MangaCard width={256} title="Spy Family" showDescription={false} />
@@ -48,7 +51,6 @@ export default function Home() {
             <MangaCard width={256} title="Sousou no Frieren" showDescription={false} />
           
             <MangaCard width={256} title="One Piece" showDescription={false} />
-          
         </center>
     </main>
   );

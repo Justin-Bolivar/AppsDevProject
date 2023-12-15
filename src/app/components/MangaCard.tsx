@@ -85,7 +85,7 @@ export default async function MangaCard({
     return (
       <>
         <center>
-          <Card sx={{ width: width * 3, display: "flex", flexDirection: "row", marginTop: 5, backgroundColor: "#f5f5f5", boxShadow: "5px 4px 10px rgba(85, 39, 127, 0.25)" }}>
+          <Card sx={{ width: width * 3, display: "flex", flexDirection: "row", marginTop: 15, backgroundColor: "#f5f5f5", boxShadow: "5px 4px 10px rgba(85, 39, 127, 0.25)" }}>
             <CardMedia component="img" height={width * 2} image={picture} />
             <CardContent>
               <Typography sx={{ marginBottom: 5, marginLeft: 5 }} variant="h1" fontWeight="bold">
