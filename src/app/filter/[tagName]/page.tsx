@@ -12,8 +12,6 @@ export default async function FilterTag({ params: { tagName } }: Params) {
     
     const replacedTagName = tagName.replace(/%20/g, " ");
 
-    console.log(replacedTagName)
-
     const selectedTagName = [replacedTagName];
 
     const baseUrl = 'https://api.mangadex.org';
