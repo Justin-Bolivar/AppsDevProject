@@ -5,7 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import { Box, Button, CardActionArea, CardActions, IconButton, Link, Tooltip, createTheme } from "@mui/material";
-import LikeButton from './likeButton';
+import LikeButton from './likedManga';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded'; //if liked
@@ -20,7 +20,6 @@ interface Props {
   width: number;
   showDescription: boolean;
   mangaID?: string;
-  isLiked?:boolean; //might change
 }
 
 
@@ -28,8 +27,7 @@ export default async function MangaCard({
   width,
   title,
   showDescription,
-  mangaID = '',
-  isLiked = false
+  mangaID = ''
 }: Props) {
   const url = "https://api.mangadex.org";
 
@@ -48,14 +46,6 @@ export default async function MangaCard({
     const filename = await response2.json();
 
     const picture = `https://uploads.mangadex.org/covers/${mangaID}/${filename.data.attributes.fileName}.${width}.jpg`;
-
-    // trial to toggle badge might delete
-    const customToggle = () => setValue((isLiked: boolean) => !isLiked)
-    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
-    const handleChange = (value: boolean) =>{
-      setLike(value)
-    }
 
     return (
       <>
@@ -223,12 +213,4 @@ export default async function MangaCard({
       </>
     );
   }
-}
-
-function setValue(arg0: (x: boolean) => boolean) {
-  throw new Error('Function not implemented.');
-}//useless might delete
-
-function setLike(arg0:boolean) {
-  <LikeButton isLiked={arg0}></LikeButton>
 }

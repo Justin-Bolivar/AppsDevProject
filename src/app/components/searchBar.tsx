@@ -22,9 +22,12 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function SearchBar() {
+  //for modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  //for search
   const [inputFieldValue, setInputFieldValue] = React.useState("");
   const router = useRouter();
   
@@ -67,6 +70,7 @@ export default function SearchBar() {
         >
           <TagWindow />
         </Modal>
+        
         <Divider sx={{ height: 28, m: 0. }} orientation="vertical" />
         <InputBase
           sx={{ ml: 1, flex: 1, color: "black", fontWeight: 800 }}
