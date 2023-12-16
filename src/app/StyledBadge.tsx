@@ -13,3 +13,5 @@ export default function StyledBadge() {
       }));
   return StyledBadge
 }
+
+//not used might delete
