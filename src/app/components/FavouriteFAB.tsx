@@ -11,7 +11,7 @@ const styleFAB = {
     bottom: 40,
     left: 'auto',
     position: 'fixed',
-    color: 'white',
+    color: '#221266',
     
 }; 
 

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import SearchBar from './components/searchBar'
-import { Box } from '@mui/material'
+import { Box, Divider } from '@mui/material'
 import FavouriteFAB from './components/FavouriteFAB'
 import { FormatAlignLeft } from '@mui/icons-material'
 
@@ -29,7 +29,8 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
         <br></br>
         <br></br>
         {children }
-        {/* <FavouriteFAB/> */}
+        <br></br>
+        <br></br>
         </body>
     </html>
   )
