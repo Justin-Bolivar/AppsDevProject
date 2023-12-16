@@ -11,7 +11,6 @@ import { Box, Grid } from "@mui/material";
 import NavBar from './components/searchBar';
 import SearchBar from './components/searchBar';
 
-
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
