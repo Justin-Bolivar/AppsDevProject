@@ -52,6 +52,10 @@ export default async function MangaCard({
     const customToggle = () => setValue((isLiked: boolean) => !isLiked)
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
+    const handleChange = (value: boolean) =>{
+      setLike(value)
+    }
+
     return (
       <>
       <Badge
@@ -68,6 +72,8 @@ export default async function MangaCard({
         }}
         badgeContent={
           <Checkbox
+            value={false} // value will depend if manga id is found in localstorage
+            // onChange={handleChange}
             sx={{
               '&:hover': { bgcolor: 'transparent' },
             }}
@@ -168,8 +174,18 @@ export default async function MangaCard({
             padding: '0 -5px'
           },
         }}
-        badgeContent={<LikeButton isLiked={false}/>}
+        badgeContent={<Checkbox
+          value={false} // value will depend if manga id is found in localstorage
+          // onChange={handleChange}
+          sx={{
+            '&:hover': { bgcolor: 'transparent' },
+          }}
+          icon={<FavoriteBorderRoundedIcon />} 
+          checkedIcon={<FavoriteRoundedIcon sx={{color: '#ab47bc', fontSize: '30px'}}/>} 
+          />}
       >
+        {/* like button ^^^ */}
+
         <Card sx={{ width: width * 2, display: "flex", flexDirection: "row", backgroundColor: "#f5f5f5", marginTop: 5, boxShadow: "5px 4px 10px rgba(85, 39, 127, 0.25)" }}>
           <CardMedia component="img" height={width} image={picture} />
           <CardContent>
@@ -202,4 +218,8 @@ export default async function MangaCard({
 
 function setValue(arg0: (x: boolean) => boolean) {
   throw new Error('Function not implemented.');
+}//useless might delete
+
+function setLike(arg0:boolean) {
+  <LikeButton isLiked={arg0}></LikeButton>
 }
