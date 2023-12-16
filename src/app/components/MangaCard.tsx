@@ -5,7 +5,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import { Box, Button, CardActionArea, CardActions, IconButton, Link, Tooltip, createTheme } from "@mui/material";
-import LikeButton from './likedManga';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded'; //if liked
@@ -64,10 +63,7 @@ export default async function MangaCard({
         badgeContent={
           <Tooltip title='Add to Favourites' placement="right" arrow>
             <Checkbox
-              value={false} // value will depend if manga id is found in localstorage
-              // onChange={handleChange}
-              // checked
-              //IDK HOW TO GET BOOLEAN BALUE FROM CHECKBOX
+              //IDK HOW TO GET BOOLEAN VALUE FROM CHECKBOX
               sx={{
                 '&:hover': { bgcolor: 'transparent' },
               }}
@@ -173,8 +169,6 @@ export default async function MangaCard({
         badgeContent={
           <Tooltip title='Add to Favourites' placement="right" arrow>
             <Checkbox
-              value={false} // value will depend if manga id is found in localstorage
-              // onChange={handleChange}
               sx={{
                 '&:hover': { bgcolor: 'transparent' },
               }}

@@ -4,20 +4,6 @@ import { Modal,Tooltip,Fab, Box,Typography, Divider } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LikedManga from './likedManga';
 
-
-const style = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 1000,
-    bgcolor: 'background.paper',
-    border: '.5px solid #000',
-    boxShadow: .54,
-    p: 4,
-    '& button': { m: .5 }
-  };
-//delete later, i added this to test FAB
 const styleFAB = {
     margin: 0,
     top: 'auto',
