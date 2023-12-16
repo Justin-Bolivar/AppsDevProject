@@ -2,13 +2,12 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import SearchBar from './components/searchBar'
-import { AppBar, Box, Stack } from '@mui/material'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Manga Search App',
-  description: 'Apps Dev Nextjs Projecc',
+  description: 'Apps Dev Nextjs Project',
 }
 
 export default function RootLayout({children,}: {children: React.ReactNode}) {
