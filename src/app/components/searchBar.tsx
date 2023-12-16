@@ -11,6 +11,7 @@ import InputBase from "@mui/material/InputBase";
 import TagWindow from "./tag_window";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Tooltip } from "@mui/material";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -48,6 +49,7 @@ export default function SearchBar() {
           justifyContent: "center",
         }}
       >
+        <Tooltip title="Search by Tag">
         <IconButton
           sx={{ p: "10px", color: "#a084ff" }}
           aria-label="menu"
@@ -55,6 +57,8 @@ export default function SearchBar() {
         >
           #
         </IconButton>
+        </Tooltip>
+
         <Modal
           open={open}
           onClose={handleClose}

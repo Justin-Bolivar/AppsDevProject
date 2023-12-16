@@ -4,12 +4,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
-import { Box, Button, CardActionArea, CardActions, IconButton, Link, createTheme } from "@mui/material";
+import { Box, Button, CardActionArea, CardActions, IconButton, Link, Tooltip, createTheme } from "@mui/material";
 import LikeButton from './likeButton';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded'; //if liked
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded'; // if not liked
+
 
 
 
@@ -71,15 +72,20 @@ export default async function MangaCard({
           },
         }}
         badgeContent={
-          <Checkbox
-            value={false} // value will depend if manga id is found in localstorage
-            // onChange={handleChange}
-            sx={{
-              '&:hover': { bgcolor: 'transparent' },
-            }}
-            icon={<FavoriteBorderRoundedIcon />} 
-            checkedIcon={<FavoriteRoundedIcon sx={{color: '#ab47bc', fontSize: '30px'}}/>} 
-            />}
+          <Tooltip title='Add to Favourites' placement="right" arrow>
+            <Checkbox
+              value={false} // value will depend if manga id is found in localstorage
+              // onChange={handleChange}
+              // checked
+              //IDK HOW TO GET BOOLEAN BALUE FROM CHECKBOX
+              sx={{
+                '&:hover': { bgcolor: 'transparent' },
+              }}
+              icon={<FavoriteBorderRoundedIcon />} 
+              checkedIcon={<FavoriteRoundedIcon sx={{color: '#ab47bc', fontSize: '30px'}}/>} 
+              />
+            </Tooltip>
+        }
       >
         {/* like button here | shouldve been on top of image hence, badge usage */}
 
@@ -130,7 +136,7 @@ export default async function MangaCard({
     return (
       <>
         <center>
-          <Card sx={{ width: width * 3, display: "flex", flexDirection: "row", marginTop: 15, backgroundColor: "#f5f5f5", boxShadow: "5px 4px 10px rgba(85, 39, 127, 0.25)" }}>
+          <Card sx={{ width: width * 2.5, display: "flex", flexDirection: "row", marginTop: 5, backgroundColor: "#f5f5f5", boxShadow: "5px 4px 10px rgba(85, 39, 127, 0.25)" }}>
             <CardMedia component="img" height={width * 2} image={picture} />
             <CardContent>
               <Typography sx={{ marginBottom: 5, marginLeft: 5 }} variant="h1" fontWeight="bold">
@@ -174,15 +180,18 @@ export default async function MangaCard({
             padding: '0 -5px'
           },
         }}
-        badgeContent={<Checkbox
-          value={false} // value will depend if manga id is found in localstorage
-          // onChange={handleChange}
-          sx={{
-            '&:hover': { bgcolor: 'transparent' },
-          }}
-          icon={<FavoriteBorderRoundedIcon />} 
-          checkedIcon={<FavoriteRoundedIcon sx={{color: '#ab47bc', fontSize: '30px'}}/>} 
-          />}
+        badgeContent={
+          <Tooltip title='Add to Favourites' placement="right" arrow>
+            <Checkbox
+              value={false} // value will depend if manga id is found in localstorage
+              // onChange={handleChange}
+              sx={{
+                '&:hover': { bgcolor: 'transparent' },
+              }}
+              icon={<FavoriteBorderRoundedIcon />} 
+              checkedIcon={<FavoriteRoundedIcon sx={{color: '#ab47bc', fontSize: '30px'}}/>} 
+            />
+          </Tooltip>}
       >
         {/* like button ^^^ */}
 
